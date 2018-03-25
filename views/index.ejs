@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/script.js"></script>
+  </head>
+  <body>
+    <form class="" action="/" method="POST">
+      <% if(data.id){ %>
+        <h2>Update</h2>
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="id" placeholder="FirstrName" value="<%= data._id %>">
+      <% }else{%>
+          <h2>Create</h2>
+      <%} %>
+        <input type="hidden" name="_redirect" value="/users">
+      <input type="text" name="firstname" placeholder="FirstrName" value="<%= data.firstname %>">
+      <span class="errFirstName">Required</span>
+      <br>
+      <input type="text" name="lastname" placeholder="LastName" value="<%= data.lastname %>">
+      <span class="errLastName">Required</span>
+      <br>
+      <input type="date" name="datebirth" placeholder="Date of Birth" value="<%= data.date %>">
+      <span class="errDateBirth">Required</span>
+      <br>
+      <input type="text" name="address" placeholder="Address" value="<%= data.address %>">
+      <span class="errAddress">Required</span>
+      <br>
+      <input type="text" name="address2" placeholder="Address2" value="<%= data.address %>">
+      <span class="errAddress2">Required</span>
+      <br>
+      <input type="text" name="country" placeholder="Country"  value="<%= data.country %>">
+      <span class="errCountry">Required</span>
+      <br>
+      <input type="text" name="city" placeholder="City"  value="<%= data.city %>">
+      <span class="errCity">Required</span>
+      <br>
+      <input type="text" name="postalcode" placeholder="Postal Code"  value="<%= data.postalcode %>">
+      <span class="errPostalcode">Required</span>
+      <br>
+      <button type="submit" name="button"> <%= data.id ? 'Update' : 'Create' %></button>
+    </form>
+    <% if(data.id){ %>
+    <form action="/">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="_redirect" value="/users">
+          <input type="hidden" name="id" placeholder="FirstrName" value="<%= data._id %>">
+          <button>DELETE</button>
+    </form>
+    <%} %>
+  </body>
+</html>
